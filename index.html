@@ -25,14 +25,23 @@ h2{font-size:clamp(28px,5vw,42px);font-weight:800;text-align:center;margin-botto
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(180deg,var(--red),var(--red2));color:#fff;text-decoration:none;font-weight:800;font-size:19px;padding:18px 36px;border-radius:16px;box-shadow:0 10px 40px rgba(255,43,43,.4),inset 0 1px 0 rgba(255,255,255,.25);transition:transform .15s,box-shadow .15s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 14px 50px rgba(255,43,43,.55),inset 0 1px 0 rgba(255,255,255,.25)}
-.btn:active{transform:translateY(0)}
+.btn:hover{box-shadow:0 14px 50px rgba(255,43,43,.55),inset 0 1px 0 rgba(255,255,255,.25)}
+
+/* hover / tap zoom */
+.fact,.hero-cover,.lesson,.item,.author,.price,.res a,.btn,.hero h1,.offer,.req{transition:transform .25s ease,box-shadow .25s ease,border-color .25s}
+.fact:hover,.hero-cover:hover,.item:hover,.author:hover,.res a:hover,.hero h1:hover,.lesson:hover{transform:scale(1.03)}
+.price:hover{transform:scale(1.015)}
+.btn:hover,.offer:hover{transform:scale(1.05)}
+.fact:active,.hero-cover:active,.item:active,.author:active,.res a:active,.hero h1:active,.lesson:active,.price:active,.btn:active,.offer:active{transform:scale(1.04)}
+@media (hover:none){.fact:hover,.hero-cover:hover,.item:hover,.author:hover,.res a:hover,.hero h1:hover,.lesson:hover,.price:hover,.btn:hover,.offer:hover{transform:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 /* hero */
 .hero{padding:56px 0 40px;text-align:center}
+.hero .facts{margin-top:34px}
 .hero h1{font-size:clamp(40px,9vw,84px);font-weight:900;margin:22px 0 18px}
 .hero h1 span{background:linear-gradient(90deg,#ff5a5a,#ff1f1f);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p.lead{font-size:clamp(18px,2.6vw,23px);color:#d6d6e0;max-width:680px;margin:0 auto 32px}
+.hero p.lead{font-size:clamp(18px,2.6vw,23px);color:#d6d6e0;max-width:680px;margin:0 auto}
 .facts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px}
 .fact{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 20px;font-size:15px;color:var(--muted)}
 .fact b{display:block;font-size:26px;color:var(--text);font-weight:800}
@@ -42,7 +51,7 @@ h2{font-size:clamp(28px,5vw,42px);font-weight:800;text-align:center;margin-botto
 /* lessons */
 .lessons{display:grid;gap:26px}
 .lesson{--c:#ff2b2b;display:grid;grid-template-columns:1.05fr 1fr;gap:0;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:border-color .2s,transform .2s}
-.lesson:hover{border-color:var(--c);transform:translateY(-3px)}
+.lesson:hover,.lesson:active{border-color:var(--c)}
 .lesson:nth-child(even) .pic{order:2}
 .pic{position:relative;background:#000}
 .pic img{display:block;width:100%;height:100%;object-fit:cover}
@@ -90,6 +99,8 @@ h2{font-size:clamp(28px,5vw,42px);font-weight:800;text-align:center;margin-botto
 .btns{display:grid;gap:12px;max-width:420px;margin:0 auto}
 .btn.alt{background:transparent;border:2px solid var(--red);box-shadow:none}
 .btn.alt:hover{background:rgba(255,43,43,.12);box-shadow:0 10px 30px rgba(255,43,43,.25)}
+.req{margin-top:18px;font-size:13px;line-height:1.7;color:#6e6e7d}
+.req b{display:block;color:#9a9aab;font-weight:600}
 .offer{color:#9a9aab;text-decoration:underline;text-underline-offset:3px}
 .offer:hover{color:#fff}
 .secure{margin-top:16px;font-size:14px;color:var(--muted)}
@@ -97,7 +108,6 @@ h2{font-size:clamp(28px,5vw,42px);font-weight:800;text-align:center;margin-botto
 footer{padding:36px 0 60px;text-align:center;color:#6e6e7d;font-size:14px}
 
 /* sticky mobile buy */
-.sticky{display:none}
 @media (max-width:760px){
   section{padding:46px 0}
   .lesson{grid-template-columns:1fr}
@@ -106,8 +116,6 @@ footer{padding:36px 0 60px;text-align:center;color:#6e6e7d;font-size:14px}
   .author{flex-direction:column;text-align:center}
   .res{column-count:1}
   .btn{width:100%;padding:18px 20px}
-  .sticky{display:block;position:fixed;left:0;right:0;bottom:0;z-index:20;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(11,11,14,.92);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
-  .sticky .btn{padding:15px;font-size:17px}
   footer{padding-bottom:100px}
 }
 </style>
@@ -118,7 +126,6 @@ footer{padding:36px 0 60px;text-align:center;color:#6e6e7d;font-size:14px}
   <div class="wrap">
     <h1 style="margin-top:0">YouTube <span>Prime</span></h1>
     <p class="lead">Небольшой практический интенсив без воды: за один вечер вы проходите 6 уроков и выходите с готовым планом для своего YouTube-канала.</p>
-    <a class="btn" href="#buy">Получить доступ за 990 ₽</a>
     <div class="facts">
       <div class="fact"><b>6</b>видеоуроков</div>
       <div class="fact"><b>1 вечер</b>на прохождение</div>
@@ -263,17 +270,17 @@ footer{padding:36px 0 60px;text-align:center;color:#6e6e7d;font-size:14px}
         <li>Закрытый Telegram-канал и чат участников</li>
         <li>Эксклюзивные эфиры и бонусы</li>
       </ul>
-      <div class="btns"><a class="btn" href="BUY_URL_RU">Получить доступ из РФ</a><a class="btn alt" href="BUY_URL_WORLD">Получить доступ из другой страны</a></div>
+      <div class="btns"><a class="btn" href="BUY_URL_RU">Получить доступ из России</a><a class="btn" href="https://app.leadpay.ru/checkout/68824/">Получить доступ из другой страны</a></div>
       <div class="secure">Доступ открывается сразу после оплаты</div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap"><a class="offer" href="https://docs.google.com/document/d/11uDZzuuEw3_ospaxvnimPnse1L6rltnsw0dS1qBeiZ4/edit?usp=sharing" target="_blank" rel="noopener">Публичная оферта</a></div>
+  <div class="wrap"><a class="offer" href="https://docs.google.com/document/d/11uDZzuuEw3_ospaxvnimPnse1L6rltnsw0dS1qBeiZ4/edit?usp=sharing" target="_blank" rel="noopener">Публичная оферта</a>
+    <div class="req"><b>Реквизиты</b>ИП Арнаут Александр Сергеевич<br>ОГРНИП 324270000041824<br>ИНН 272003132390</div></div>
 </footer>
 
-<div class="sticky"><a class="btn" href="#buy">Получить доступ за 990 ₽</a></div>
-
+<script>document.addEventListener("touchstart",function(){},{passive:true});</script>
 </body>
 </html>
