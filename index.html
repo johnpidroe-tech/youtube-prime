@@ -27,13 +27,18 @@ h2{font-size:clamp(28px,5vw,42px);font-weight:800;text-align:center;margin-botto
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(180deg,var(--red),var(--red2));color:#fff;text-decoration:none;font-weight:800;font-size:19px;padding:18px 36px;border-radius:16px;box-shadow:0 10px 40px rgba(255,43,43,.4),inset 0 1px 0 rgba(255,255,255,.25);transition:transform .15s,box-shadow .15s}
 .btn:hover{box-shadow:0 14px 50px rgba(255,43,43,.55),inset 0 1px 0 rgba(255,255,255,.25)}
 
-/* hover / tap zoom */
-.fact,.hero-cover,.lesson,.item,.author,.price,.res a,.btn,.hero h1,.offer,.req{transition:transform .25s ease,box-shadow .25s ease,border-color .25s}
-.fact:hover,.hero-cover:hover,.item:hover,.author:hover,.res a:hover,.hero h1:hover,.lesson:hover{transform:scale(1.03)}
-.price:hover{transform:scale(1.015)}
-.btn:hover,.offer:hover{transform:scale(1.05)}
+/* hover / tap zoom + glow */
+.fact,.hero-cover,.lesson,.item,.author,.price,.res a,.btn,.hero h1,.offer,.req{transition:transform .45s cubic-bezier(.22,.61,.36,1),box-shadow .45s ease,filter .45s ease,border-color .45s ease}
+@media (hover:hover){
+  .fact:hover,.item:hover,.author:hover,.res a:hover{transform:scale(1.03);box-shadow:0 0 36px rgba(255,43,43,.32)}
+  .hero-cover:hover{transform:scale(1.03);box-shadow:0 0 60px rgba(255,43,43,.5)}
+  .lesson:hover{transform:scale(1.025);box-shadow:0 0 44px var(--c)}
+  .price:hover{transform:scale(1.015);box-shadow:0 0 80px rgba(255,43,43,.4)}
+  .btn:hover{transform:scale(1.05);box-shadow:0 0 50px rgba(255,43,43,.7),inset 0 1px 0 rgba(255,255,255,.25)}
+  .hero h1:hover{transform:scale(1.03);filter:drop-shadow(0 0 22px rgba(255,43,43,.5))}
+  .offer:hover{transform:scale(1.05)}
+}
 .fact:active,.hero-cover:active,.item:active,.author:active,.res a:active,.hero h1:active,.lesson:active,.price:active,.btn:active,.offer:active{transform:scale(1.04)}
-@media (hover:none){.fact:hover,.hero-cover:hover,.item:hover,.author:hover,.res a:hover,.hero h1:hover,.lesson:hover,.price:hover,.btn:hover,.offer:hover{transform:none}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 /* hero */
@@ -270,7 +275,7 @@ footer{padding:36px 0 60px;text-align:center;color:#6e6e7d;font-size:14px}
         <li>Закрытый Telegram-канал и чат участников</li>
         <li>Эксклюзивные эфиры и бонусы</li>
       </ul>
-      <div class="btns"><a class="btn" href="BUY_URL_RU">Получить доступ из России</a><a class="btn" href="https://app.leadpay.ru/checkout/68824/">Получить доступ из другой страны</a></div>
+      <div class="btns"><a class="btn" href="https://ornaud.getcourse.ru/prime">Получить доступ из России</a><a class="btn" href="https://app.leadpay.ru/checkout/68824/">Получить доступ из другой страны</a></div>
       <div class="secure">Доступ открывается сразу после оплаты</div>
     </div>
   </div>
